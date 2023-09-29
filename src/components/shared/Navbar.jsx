@@ -17,7 +17,7 @@ const Navbar = () => {
           </span>
         </Link>
 
-        <div className="flex items-center">
+        <div className="flex items-center justify-between gap-8">
           <ToggleTheme/>
           <h1>signIn</h1>
         </div>

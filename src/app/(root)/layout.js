@@ -4,6 +4,7 @@ import './globals.css'
 import Sidebar from '@/components/shared/Sidebar'
 import Bottombar from '@/components/shared/Bottombar'
 import Providers from '@/lib/ThemeProviders'
+import AuthProvider from '@/lib/AuthProvider'
 
 
 export const metadata = {
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
+        <AuthProvider>
         <Providers>
         <Navbar/>
         <main className='flex'>
@@ -25,6 +27,7 @@ export default function RootLayout({ children }) {
         </main>
         <Bottombar/>
         </Providers>
+        </AuthProvider>
         </body>
     </html>
   )

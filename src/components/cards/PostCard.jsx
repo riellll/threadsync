@@ -5,6 +5,7 @@ import heart from "../../../public/assets/heart-gray.svg";
 import reply from "../../../public/assets/reply.svg";
 import repost from "../../../public/assets/repost.svg";
 import share from "../../../public/assets/share.svg";
+import donbel from "../../../public/don-bel.webp";
 
 const PostCard = () => {
   const isComment = false
@@ -36,9 +37,14 @@ const PostCard = () => {
             </h4>
           </Link>
 
-          <p className="mt-2 text-small-regular text-black dark:text-gray-200">{'content'}</p>
+          <p className="mt-2 text-small-regular pb-3 text-black dark:text-gray-200">{'contentasdasdasdasdasdad asdasdasdasdasd sdasdad sadadadadasd asdsdadasdasd asdadasdasdadasdasdsasdsadsadasd sadasdasdasd asdasdasd sdasdasdasdadsad asdadsad asdadasdasdasd asddasd'}</p>
+          <Image src={donbel}
+                alt="heart"
+                width={500}
+                height={500}
+                className="w-96 h-auto"/>
 
-          <div className={`${isComment && "mb-10"} mt-5 flex flex-col gap-3`}>
+          <div className={`${isComment && "mb-10"} flex flex-col gap-3`}>
           <div className={`mt-5 flex flex-col gap-3`}>
             <div className="flex gap-3.5">
               <Image

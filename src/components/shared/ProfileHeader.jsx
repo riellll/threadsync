@@ -3,25 +3,34 @@ import profile from "../../../public/assets/user.svg";
 import Image from 'next/image';
 import Link from 'next/link';
 
-const ProfileHeader = () => {
+const ProfileHeader = ({
+  accountId,
+  authUserId,
+  name,
+  username,
+  imgUrl,
+  bio,
+  type,
+}) => {
   return (
     <div className="flex w-full flex-col justify-start">
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="relative h-20 w-20 object-cover">
+          <div className="flex h-20 w-20 object-cover items-center">
             <Image
-              src={profile}
+              src={imgUrl}
               alt="logo"
-              fill
-              className="rounded-full object-cover shadow-2xl"
+              width={500}
+              height={500}
+              className="w-20 h-auto rounded-full object-cover shadow-2xl"
             />
           </div>
 
           <div className="flex-1">
-            <h2 className="text-left text-xl font-semibold text-white">
-              {'name'}
+            <h2 className="text-left text-xl font-semibold dark:text-white text-gray-900">
+              {name}
             </h2>
-            <p className="text-base-medium text-gray-400">@{'username'}</p>
+            <p className="text-base-medium dark:text-gray-400 text-gray-900">{username}</p>
           </div>
         </div>
         {/* {accountId === authUserId && type !== "Community" && ( */}
@@ -35,7 +44,7 @@ const ProfileHeader = () => {
         {/* )} */}
       </div>
 
-      <p className="mt-6 max-w-lg text-base-regular text-gray-100">{'bio'}</p>
+      <p className="mt-6 max-w-lg text-base-regular dark:text-gray-400 text-gray-900">{bio}</p>
 
       <div className="mt-12 h-0.5 w-full bg-dark-3" />
     </div>

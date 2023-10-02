@@ -2,16 +2,17 @@
 
 import { signIn } from "next-auth/react";
 
+
 const LoginForm = () => {
-    const handleLogin = async (e) => {
-        e.preventDefault();
-    
-        const email = e.target[0].value;
-        const password = e.target[1].value;
-        if (!email && !password) return null;
-        // console.log(email, password);
-        signIn("credentials", { email, password });
-      };
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    const email = e.target[0].value;
+    const password = e.target[1].value;
+    if (!email && !password) return null;
+    // console.log(email, password);
+    signIn("credentials", { email, password });
+  };
   return (
     <>
       <div className="flex flex-col justify-center text-gray-200 justify-items-center items-center py-4">
@@ -84,7 +85,7 @@ const LoginForm = () => {
         Continue with Google
       </button>
     </>
-  )
-}
+  );
+};
 
-export default LoginForm
+export default LoginForm;

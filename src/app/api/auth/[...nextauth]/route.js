@@ -21,6 +21,7 @@ export const authOptions = {
           name: 'Guest',
           id: "0987654321",
           email: "test@gmail.com",
+          image: 'https://icon-library.com/images/guest-account-icon/guest-account-icon-12.jpg',
           password: "test123456",
         };
         // console.log(credentials);

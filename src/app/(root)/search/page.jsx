@@ -1,44 +1,53 @@
-import React from "react";
+import { getServerSession } from "next-auth";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { redirect } from "next/navigation";
+import { fetchUser, fetchUsers } from '@/lib/actions/user.action';
+import Searchbar from "@/components/shared/Searchbar";
+import UserCard from "@/components/cards/UserCard";
 
-const page = () => {
+
+
+const page = async ({searchParams}) => {
+  const session = await getServerSession(authOptions);
+  // console.log(session);
+  if (!session) {
+    redirect("/login");
+  };
+  const userInfo = await fetchUser(session?.user.id);
+  if (!userInfo?.onboarded) redirect("/onboarding");
+
+  const result = await fetchUsers({
+    userId: session?.user.id,
+    searchString: searchParams.q,
+    pageNumber: searchParams?.page ? +searchParams.page : 1,
+    pageSize: 25,
+  });
+  //  console.log(result)
   return (
-    <>
+    <section>
       <h1 className="text-3xl font-bold text-black dark:text-gray-200 pb-10">Search</h1>
-      <form>
-        <label
-          htmlFor="default-search"
-          className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-        >
-          Search
-        </label>
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-            <svg
-              className="w-4 h-4 text-gray-500 dark:text-gray-400"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 20"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+
+    <Searchbar/>
+
+    <div className='mt-14 flex flex-col gap-9'>
+        {result.length === 0 ? (
+          <p className='no-result'>No Result</p>
+        ) : (
+          <>
+            {result.map((person) => (
+              <UserCard
+                key={person.id}
+                id={person.id}
+                name={person.name}
+                username={person.username}
+                imgUrl={person.image}
+                personType='User'
               />
-            </svg>
-          </div>
-          <input
-            type="search"
-            id="default-search"
-            className="block w-full p-4 pl-10 text-gray-800 border text-xl border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-900 dark:focus:border-blue-900"
-            placeholder="Search..."
-            required
-          />
-        </div>
-      </form>
-    </>
+            ))}
+          </>
+        )}
+      </div>
+      </section>
   );
 };
 

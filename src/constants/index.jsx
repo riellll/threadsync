@@ -1,3 +1,4 @@
+
 export const sidebarLinks = [
     {
       imgURL: "M3 8v10a1 1 0 0 0 1 1h4v-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5h4a1 1 0 0 0 1-1V8M1 10l9-9 9 9",
@@ -21,7 +22,7 @@ export const sidebarLinks = [
     // },
     {
       imgURL: "M7 8a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm-2 3h4a4 4 0 0 1 4 4v2H1v-2a4 4 0 0 1 4-4Z",
-      route: "/profile/123123",
+      route: "/profile",
       label: "Profile",
     },
   ];

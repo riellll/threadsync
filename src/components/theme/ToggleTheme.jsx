@@ -1,8 +1,7 @@
 "use client";
 import { useTheme } from "next-themes";
 import Image from "next/image";
-import moon from "../../../public/moonn.svg";
-import sun from "../../../public/sun.svg";
+import { BsFillMoonStarsFill, BsFillSunFill } from 'react-icons/bs';
 
 import {
   Menubar,
@@ -15,23 +14,27 @@ import {
   MenubarTrigger,
 } from "@/components/ui/menubar";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const ToggleTheme = () => {
-  const { resolvedTheme, setTheme, systemTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
   const [lds, setlds] = useState(resolvedTheme)
-  console.log(lds);
+  // console.log(lds);
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
+
+  if (!mounted) {
+    return null
+  }
+
+
   return (
     <Menubar>
       <MenubarMenu>
         <MenubarTrigger>
-          <Image
-            className="text-white cursor-pointer"
-            src={resolvedTheme === "dark" ? moon : sun}
-            width={20}
-            height={20}
-            alt="moon&sun"
-          />
+          <div className="text-black dark:text-white cursor-pointer text-xl">
+            {resolvedTheme === 'dark' ? <BsFillMoonStarsFill/> : <BsFillSunFill/>}
+          </div>
         </MenubarTrigger>
         <MenubarContent>
         <MenubarItem>
@@ -55,7 +58,7 @@ const ToggleTheme = () => {
             </button>
           </MenubarItem>
           <MenubarItem>
-          <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 mr-2"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z" strokeWidth="2" strokeLinejoin="round" className={`${lds === 'system' ? 'stroke-sky-500' : 'stroke-slate-500'} dark:stroke-slate-500`}></path><path d="M14 15c0 3 2 5 2 5H8s2-2 2-5" strokeWidth="2" strokLinecap="round" strokeLinejoin="round" className={`${lds === 'system' ? 'stroke-sky-500' : 'stroke-slate-500'} dark:stroke-slate-500`}></path></svg>
+          <svg viewBox="0 0 24 24" fill="none" className="w-6 h-6 mr-2"><path d="M4 6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6Z" strokeWidth="2" strokeLinejoin="round" className={`${lds === 'system' ? 'stroke-sky-500' : 'stroke-slate-500'} dark:stroke-slate-500`}></path><path d="M14 15c0 3 2 5 2 5H8s2-2 2-5" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={`${lds === 'system' ? 'stroke-sky-500' : 'stroke-slate-500'} dark:stroke-slate-500`}></path></svg>
             <button
               type="submit"
               className="block grow text-start text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"

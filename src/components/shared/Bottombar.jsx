@@ -25,13 +25,12 @@ const Bottombar = () => {
         : item.route;
       return (
          <li key={item.label}>
-            <Link href={route} className={`relative flex flex-col items-center text-gray-900
-dark:text-white gap-1 rounded-lg p-1 sm:flex-1 sm:px-2 sm:py-2.5 ${
-                      pathname === route && "text-amber-800 dark:text-lime-500"
+            <Link href={route} className={`relative flex flex-col items-center gap-1 rounded-lg p-1 sm:flex-1 sm:px-2 sm:py-2.5 ${
+                      pathname === route ? "text-amber-800 dark:text-lime-500" : 'text-gray-800 dark:text-white'
                     }`}>
                     <svg
-                      className={`w-4 h-4 text-gray-800 dark:text-white ${
-                        pathname === route && "text-amber-800 dark:text-lime-500"
+                      className={`w-4 h-4 ${
+                        pathname === route ? "text-amber-800 dark:text-lime-500" : 'text-gray-800 dark:text-white'
                       }`}
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"

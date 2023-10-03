@@ -15,7 +15,7 @@ const Sidebar = () => {
         className="fixed top-16 left-0 z-40 w-56 h-screen transition-transform -translate-x-full md:translate-x-0 max-lg:w-16"
         aria-label="Sidebar"
       >
-        <div className="h-full px-3 py-4 overflow-y-auto bg-gray-100 dark:bg-gray-950">
+        <div className="h-full px-3 py-4 mt-3 overflow-y-auto bg-gray-200 border-gray-300 dark:bg-gray-950">
           <ul className="space-y-10 font-medium">
             {sidebarLinks.map((item) => {
               const route =
@@ -26,8 +26,8 @@ const Sidebar = () => {
                 <li key={item.label}>
                   <Link
                     href={route}
-                    className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-200 dark:hover:bg-gray-900 group ${
-                      pathname === route && "bg-gray-200 dark:bg-gray-900"
+                    className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 group ${
+                      pathname === route && "bg-gray-100 dark:bg-gray-900"
                     }`}
                   >
                     <svg

@@ -112,7 +112,7 @@ const AccountProfile = ({ user, btnTitle }) => {
           </label>
           <input
             type="text"
-            className=" rounded p-2 w-full bg-gray-50 border text-gray-900 border-gray-300 dark:bg-gray-700 dark:border-gray-600"
+            className=" rounded p-2 w-full bg-gray-50 border text-gray-900 dark:text-gray-200 border-gray-300 dark:bg-gray-700 dark:border-gray-600"
             name="name"
             defaultValue={user.name}
           />
@@ -127,7 +127,7 @@ const AccountProfile = ({ user, btnTitle }) => {
           </label>
           <input
             type="text"
-            className=" rounded p-2 w-full bg-gray-50 border text-gray-900 border-gray-300 dark:bg-gray-700 dark:border-gray-600"
+            className=" rounded p-2 w-full bg-gray-50 border text-gray-900 dark:text-gray-200  border-gray-300 dark:bg-gray-700 dark:border-gray-600"
             name="username"
             defaultValue={user.username}
           />
@@ -141,7 +141,7 @@ const AccountProfile = ({ user, btnTitle }) => {
             Bio
           </label>
           <textarea
-            className="rounded p-2 w-full bg-gray-50 border text-gray-900 border-gray-300 dark:bg-gray-700 dark:border-gray-600"
+            className="rounded p-2 w-full bg-gray-50 border text-gray-900 dark:text-gray-200  border-gray-300 dark:bg-gray-700 dark:border-gray-600"
             name="bio"
             rows="10"
             defaultValue={user.bio}

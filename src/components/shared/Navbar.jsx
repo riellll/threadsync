@@ -16,7 +16,7 @@ const Navbar = async () => {
             className="h-8 mr-3"
             alt="Flowbite Logo"
           />
-          <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Thread<span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Sync</span></h1>
+          <h1 class="text-3xl font-bold text-gray-900 dark:text-white">T<span className="max-sm:hidden">hread</span><span class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">S<span className="max-sm:hidden">ync</span></span></h1>
         </Link>
 
         <div className="flex items-center justify-between gap-8">

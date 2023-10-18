@@ -1,11 +1,14 @@
 "use server";
 
 import { revalidatePath } from "next/cache";
+
+
+import { connectToDB } from "../mongoose";
 import User from "../models/user.model";
 import Thread from "../models/thread.model";
 
 
-const { connectToDB } = require("../mongoose");
+
 
 export async function fetchUser(userId) {
   connectToDB();
@@ -16,6 +19,7 @@ export async function fetchUser(userId) {
       path: "communities",
       model: Community,
     }); */
+
   } catch (error) {
     throw new Error(`Failed to fetch user: ${error.message}`);
   }
@@ -99,8 +103,8 @@ export async function fetchUsers({
 
 
 export async function fetchUserPosts(userId) {
-  connectToDB();
   try {
+    connectToDB();
 
     // Find all threads authored by the user with the given userId
     const threads = await User.findOne({ id: userId }).populate({
@@ -123,7 +127,8 @@ export async function fetchUserPosts(userId) {
         },
       ],
     });
-    // console.log(threads);
+    const threadss = await User.findOne({ id: userId }).populate('threads');
+    console.log(threadss);
     return threads;
   } catch (error) {
     console.error("Error fetching user threads:", error);

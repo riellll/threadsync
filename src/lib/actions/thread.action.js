@@ -266,3 +266,4 @@ export async function deleteThread(id, path) {
     throw new Error(`Failed to delete thread: ${error.message}`);
   }
 }
+

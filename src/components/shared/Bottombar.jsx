@@ -27,7 +27,7 @@ const Bottombar = () => {
          <li key={item.label}>
             <Link href={route} className={`relative flex flex-col items-center gap-1 rounded-lg p-1 sm:flex-1 sm:px-2 sm:py-2.5`}>
                     <svg
-                      className={`w-5 h-5 ${
+                      className={`w-6 h-6 ${
                         pathname === route ? "text-cyan-400" : 'text-gray-800 dark:text-white'
                       }`}
                       aria-hidden="true"

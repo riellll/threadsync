@@ -139,11 +139,11 @@ const PostCard = ({
             {comments.length} repl{comments.length > 1 ? "ies" : "y"}
           </p>
         </Link>
-        <Link href={`/thread/${id}`}>
+       {/*  <Link href={`/thread/${id}`}>
           <p className="mt-1 text-sm text-gray-500">
             {comments.length} Like{comments.length > 1 && "s"}
           </p>
-        </Link>
+        </Link> */}
       </div>
     )}
 

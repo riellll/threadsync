@@ -62,13 +62,19 @@ const PostCard = ({
             <div className={`flex flex-col gap-3`}>
               <div className={`mt-5 flex flex-col gap-3`}>
                 <div className="flex gap-3.5">
+                  {/* <button className="flex"> */}
                   <Image
                     src={heart}
                     alt="heart"
                     width={24}
                     height={24}
-                    className="cursor-pointer object-contain"
-                  />
+                    className="cursor-pointer object-contain text-red-500 rounded-full"
+                    />
+                    {/* <span className="text-gray-500">023</span> */}
+                    {/* </button> */}
+                  {/* <svg className="w-5 h-5 mt-1 cursor-pointer object-contain text-gray-600 dark:text-white hover:text-red-400 focus-visible:fill-red-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M11 4C5.5-1.5-1.5 5.5 4 11l7 7 7-7c5.458-5.458-1.542-12.458-7-7Z"/>
+  </svg> */}
                   <Link href={`/thread/${id}`}>
                     <Image
                       src={reply}
@@ -94,13 +100,13 @@ const PostCard = ({
                   />
                 </div>
 
-                    {isComment && comments.length > 0 && (
+                  {/*   {isComment && comments.length > 0 && (
               <Link href={`/thread/${id}`}>
                 <p className="text-sm text-gray-500">
                   {comments.length} repl{comments.length > 1 ? "ies" : "y"}
                 </p>
               </Link>
-            )}
+            )} */}
               </div>
             </div>
           </div>
@@ -131,6 +137,11 @@ const PostCard = ({
         <Link href={`/thread/${id}`}>
           <p className="mt-1 text-sm text-gray-500">
             {comments.length} repl{comments.length > 1 ? "ies" : "y"}
+          </p>
+        </Link>
+        <Link href={`/thread/${id}`}>
+          <p className="mt-1 text-sm text-gray-500">
+            {comments.length} Like{comments.length > 1 && "s"}
           </p>
         </Link>
       </div>

@@ -20,7 +20,7 @@ const Sidebar = () => {
             {sidebarLinks.map((item) => {
               const route =
                 item.route === "/profile"
-                  ? `${item.route}/${session?.user?.id}`
+                  ? `${item.route}/${session?.user?.id || '1234'}`
                   : item.route;
               return (
                 <li key={item.label}>

@@ -21,20 +21,18 @@ const Bottombar = () => {
     {sidebarLinks.map((item) => {
       const route =
       item.route === "/profile"
-        ? `${item.route}/${session?.user?.id}`
+        ? `${item.route}/${session?.user?.id || '1234'}`
         : item.route;
       return (
          <li key={item.label}>
-            <Link href={route} className={`relative flex flex-col items-center gap-1 rounded-lg p-1 sm:flex-1 sm:px-2 sm:py-2.5 ${
-                      pathname === route ? "text-amber-800 dark:text-lime-500" : 'text-gray-800 dark:text-white'
-                    }`}>
+            <Link href={route} className={`relative flex flex-col items-center gap-1 rounded-lg p-1 sm:flex-1 sm:px-2 sm:py-2.5`}>
                     <svg
-                      className={`w-4 h-4 ${
-                        pathname === route ? "text-amber-800 dark:text-lime-500" : 'text-gray-800 dark:text-white'
+                      className={`w-5 h-5 ${
+                        pathname === route ? "text-cyan-400" : 'text-gray-800 dark:text-white'
                       }`}
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
+                      fill={"none"}
                       viewBox={
                         item.label == "profile" ? "0 0 14 18" : "0 0 20 20"
                       }
@@ -48,7 +46,7 @@ const Bottombar = () => {
                       />
                     </svg>
 
-               <span>{item.label}</span>
+               {/* <span>{item.label}</span> */}
             </Link>
          </li>
       )

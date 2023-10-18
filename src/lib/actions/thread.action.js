@@ -6,7 +6,6 @@ import { connectToDB } from "../mongoose";
 import Thread from "../models/thread.model";
 import User from "../models/user.model";
 
-
 export async function fetchPosts(pageNumber = 1, pageSize = 20) {
   connectToDB();
 
@@ -152,6 +151,51 @@ export async function addCommentToThread(threadId, commentText, userId, path) {
     console.error("Error while adding comment:", err);
     throw new Error("Unable to add comment");
   }
+}
+
+export async function fetchReplyThreads(threadId) {
+  connectToDB();
+  try {
+    const childThreads = await Thread.find()
+      .populate({
+        path: "author",
+        model: User,
+        select: "_id id name image",
+      }) // Populate the author field with _id and username
+      .populate({
+        path: "children", // Populate the children field
+        populate: [
+          {
+            path: "author", // Populate the author field within children
+            model: User,
+            select: "_id id name parentId image", // Select only _id and username fields of the author
+          },
+          {
+            path: "children", // Populate the children field within children
+            model: Thread, // The model of the nested children (assuming it's the same "Thread" model)
+            populate: {
+              path: "author", // Populate the author field within nested children
+              model: User,
+              select: "_id id name parentId image", // Select only _id and username fields of the author
+            },
+          },
+        ],
+      })
+      .exec();
+
+      const replies = childThreads.reduce((acc, item) => {
+         item.children.filter(fil => fil.author.id === threadId && acc.push(item))
+         return acc
+      },[])
+      const uniqueReplies = [...new Set(replies)];
+      // console.log(uniqueReplies);
+
+    return uniqueReplies;
+  } catch (error) {
+    console.error("Error while adding comment:", err);
+    throw new Error("Unable to add comment");
+  }
+  // console.log(childThreads)
 }
 
 async function fetchAllChildThreads(threadId) {

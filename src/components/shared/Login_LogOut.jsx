@@ -12,7 +12,7 @@ const Login_LogOut = ({ session }) => {
     const router = useRouter()
     return (
       <>
-        <div className="flex cursor-pointer gap-2 p-2 hover:bg-purple-900 rounded-lg group"
+        <div className="flex cursor-pointer gap-2 p-2 hover:bg-gradient-to-r hover:from-cyan-500 hover:via-cyan-600 hover:to-cyan-700 rounded-lg group"
         onClick={() => session ? signOut("google", { callbackUrl: "/" }) : router.push('/login')}
         >
         <div className="mt-1 text-2xl font-normal text-gray-900 rounded group-hover:text-gray-100 md:hover:bg-transparent md:border-0 md:p-0 dark:text-white dark:hover:text-white"

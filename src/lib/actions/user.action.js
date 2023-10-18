@@ -8,8 +8,8 @@ import Thread from "../models/thread.model";
 const { connectToDB } = require("../mongoose");
 
 export async function fetchUser(userId) {
+  connectToDB();
   try {
-    connectToDB();
 
     return await User.findOne({ id: userId });
     /*    .populate({
@@ -99,8 +99,8 @@ export async function fetchUsers({
 
 
 export async function fetchUserPosts(userId) {
+  connectToDB();
   try {
-    connectToDB();
 
     // Find all threads authored by the user with the given userId
     const threads = await User.findOne({ id: userId }).populate({
@@ -123,6 +123,7 @@ export async function fetchUserPosts(userId) {
         },
       ],
     });
+    // console.log(threads);
     return threads;
   } catch (error) {
     console.error("Error fetching user threads:", error);

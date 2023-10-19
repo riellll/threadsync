@@ -22,7 +22,7 @@ const UserCard = ({ id, name, username, imgUrl, personType }) => {
     
             <div className='flex-1'>
               <h4 className='font-semibold'>{name}</h4>
-              <p className='font-normal'>@{username}</p>
+              <p className='font-normal dark:text-gray-400 text-gray-900'>@{username}</p>
             </div>
           </div>
     

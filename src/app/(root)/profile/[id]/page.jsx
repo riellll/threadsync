@@ -42,12 +42,12 @@ const page = async ({params}) => {
 
       <div className="mt-9">
         <Tabs defaultValue="threads" className="w-full">
-          <TabsList className="flex min-h-[50px] flex-1 items-center gap-3 bg-dark-2 text-light-2 data-[state=active]:bg-[#0e0e12] data-[state=active]:text-light-2">
+          <TabsList className="flex min-h-[50px] flex-1 items-center gap-3 bg-dark-2 text-light-2 data-[state=active]:bg-[#0e0e12] data-[state=active]:text-gray-300">
             {profileTabs.map((tab) => (
               <TabsTrigger
                 key={tab.label}
                 value={tab.value}
-                className="flex min-h-[50px] flex-1 items-center gap-3 bg-dark-2 text-light-2 data-[state=active]:bg-[#0e0e12] data-[state=active]:text-light-2"
+                className={`flex min-h-[50px] flex-1 items-center gap-3 bg-gray-2 text-light-2 data-[state=active]:bg-[#0e0e12] data-[state=active]:text-gray-300`}
               >
                 <Image
                   src={tab.icon}
@@ -56,10 +56,10 @@ const page = async ({params}) => {
                   height={24}
                   className="object-contain"
                 />
-                <p className="max-sm:hidden text-gray-300">{tab.label}</p>
+                <p className="max-sm:hidden">{tab.label}</p>
 
                 {tab.label === "Threads" && (
-                  <p className="ml-1 rounded-sm bg-light-4 px-2 py-1 text-gray-300">
+                  <p className="ml-1 rounded-sm bg-light-4 px-2 py-1">
                     {userInfo.threads.length}
                   </p>
                 )}
@@ -69,8 +69,7 @@ const page = async ({params}) => {
             <TabsContent
               value='threads'
             >
-              {profileTabs.map((tab) => (
-              <div key={`content-${tab.label}`} className="w-full text-light-1">
+              <div className="w-full text-light-1">
               {/* @ts-ignore */}
               <ThreadsTab
                 currentUserId={session?.user.id}
@@ -78,7 +77,6 @@ const page = async ({params}) => {
                 accountType="User"
                 />
                 </div>
-          ))}
             </TabsContent>
             <TabsContent
               value='replies'

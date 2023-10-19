@@ -3,9 +3,9 @@ import PostCard from "../cards/PostCard"
 
 
 
+
 const RepliesTab = async ({ currentUserId, accountId, accountType }) => {
   const replies = await fetchReplyThreads(accountId)
-  // console.log(replies);
   return (
     <section className="mt-9 flex flex-col gap-10">
       {replies.map((thread) => (

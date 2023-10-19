@@ -14,7 +14,7 @@ export async function fetchUser(userId) {
   connectToDB();
   try {
 
-    return await User.findOne({ id: userId });
+    return await User.findOne({ id: userId }).exec();
     /*    .populate({
       path: "communities",
       model: Community,
@@ -126,9 +126,9 @@ export async function fetchUserPosts(userId) {
           },
         },
       ],
-    });
-    const threadss = await User.findOne({ id: userId }).populate('threads');
-    console.log(threadss);
+    }).exec();
+    // const threadss = await User.findOne({ id: userId }).populate('threads');
+    // console.log(threadss);
     return threads;
   } catch (error) {
     console.error("Error fetching user threads:", error);

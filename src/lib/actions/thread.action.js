@@ -183,12 +183,14 @@ export async function fetchReplyThreads(threadId) {
       })
       .exec();
 
+
       const replies = childThreads.reduce((acc, item) => {
          item.children.filter(fil => fil.author.id === threadId && acc.push(item))
          return acc
       },[])
+
       const uniqueReplies = [...new Set(replies)];
-      // console.log(uniqueReplies);
+      // console.log(childThreadss);
 
     return uniqueReplies;
   } catch (error) {
@@ -209,6 +211,7 @@ async function fetchAllChildThreads(threadId) {
 
   return descendantThreads;
 }
+
 
 export async function deleteThread(id, path) {
   try {

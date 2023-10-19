@@ -19,7 +19,7 @@ const page = async ({ params }) => {
 
   const thread = await fetchThreadById(params.id);
   if (!thread) throw new Error("Error to fetch Data");
-    // console.log(thread);
+
 
   return (
     <section className="relative">

@@ -1,9 +1,10 @@
 import { fetchUserPosts } from "@/lib/actions/user.action";
 import PostCard from "../cards/PostCard";
 
+
 const ThreadsTab = async ({ currentUserId, accountId, accountType }) => {
   const result = await fetchUserPosts(accountId);
-
+ 
   return (
     <section className="mt-9 flex flex-col gap-10">
       {result.threads.map((thread) => (

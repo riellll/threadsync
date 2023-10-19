@@ -26,12 +26,12 @@ const Sidebar = () => {
                 <li key={item.label}>
                   <Link
                     href={route}
-                    className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-900 group ${
+                    className={`flex items-center p-2 text-gray-900 rounded-lg dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-900 group ${
                       pathname === route && "bg-gray-100 dark:bg-gray-900"
                     }`}
                   >
                     <svg
-                      className="w-5 h-5 text-gray-800 dark:text-white"
+                      className="w-5 h-5 text-gray-800 dark:text-gray-300"
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"

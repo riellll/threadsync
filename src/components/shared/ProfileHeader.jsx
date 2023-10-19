@@ -12,6 +12,7 @@ const ProfileHeader = ({
   bio,
   type,
 }) => {
+  // console.log(accountId)
   return (
     <div className="flex w-full flex-col justify-start">
       <div className="flex items-center justify-between">
@@ -30,7 +31,7 @@ const ProfileHeader = ({
             <h2 className="text-left text-xl font-semibold dark:text-white text-gray-900">
               {name}
             </h2>
-            <p className="text-base-medium dark:text-gray-400 text-gray-900">{username}</p>
+            <p className="text-base-medium dark:text-gray-400 text-gray-900">@{username}</p>
           </div>
         </div>
         {/* {accountId === authUserId && type !== "Community" && ( */}

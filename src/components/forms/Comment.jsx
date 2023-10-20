@@ -3,10 +3,11 @@
 import { addCommentToThread } from "@/lib/actions/thread.action";
 import profile from "../../../public/assets/profile.svg";
 import Image from "next/image";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
-const Comment = ({ threadId, currentUserImg, currentUserId }) => {
+const Comment = ({ threadId, currentUserImg, currentUserId, onboarded}) => {
   const pathname = usePathname();
+      const router = useRouter()
 /*   console.log(
     typeof threadId,
     typeof currentUserImg,
@@ -16,6 +17,16 @@ const Comment = ({ threadId, currentUserImg, currentUserId }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if(!currentUserId){
+    e.target.reset();
+    router.push('/onboarding')
+    return
+    }
+  /*   if(!onboarded){
+    e.target.reset();
+    router.push('/onboarding')
+    return
+    } */
     const comment = e.target[0].value;
     if(!comment) return;
     // console.log(e.target[0].value)
@@ -32,7 +43,7 @@ const Comment = ({ threadId, currentUserImg, currentUserId }) => {
       <div className="flex items-center px-3 py-3 bg-white border-y border-y-gray-300 dark:bg-black dark:border-y-gray-800">
         <div className="inline-flex justify-center p-2 text-gray-500 rounded-full dark:text-gray-400">
           <Image
-            src={currentUserImg}
+            src={currentUserImg || profile}
             alt="heart"
             width={500}
             height={500}
@@ -45,7 +56,6 @@ const Comment = ({ threadId, currentUserImg, currentUserId }) => {
           rows="1"
           className="block mx-4 p-2.5 w-full text-sm text-gray-800 bg-white rounded-lg border border-gray-300  outline-none ring-0 shadow-none focus:shadow-none focus:outline-none border-none focus:border-none focus:ring-0 dark:bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Your message..."
-          required
         ></textarea>
         <button
           type="submit"

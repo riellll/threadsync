@@ -43,9 +43,9 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
   const pageCount = Math.ceil(totalPostsCount / pageSize);
 
   const isNext = totalPostsCount > skipAmount + posts.length;
-  
-  const stringfy = JSON.stringify({ posts, isNext, pageCount })
-  const parse = JSON.parse(stringfy)
+
+  const stringfy = JSON.stringify({ posts, isNext, pageCount });
+  const parse = JSON.parse(stringfy);
   // console.log(parse)
   return parse;
 }
@@ -84,38 +84,70 @@ export async function createThread({ text, img, author, path }) {
   }
 }
 
-export async function fetchThreadById(threadId) {
+export async function fetchThreadById(threadId, from) {
   connectToDB();
   //    console.log(threadId)
   try {
-    const thread = await Thread.findById(threadId)
-      .populate({
-        path: "author",
-        model: User,
-        select: "_id id name image",
-      }) // Populate the author field with _id and username
-      .populate({
-        path: "children", // Populate the children field
-        populate: [
-          {
-            path: "author", // Populate the author field within children
-            model: User,
-            select: "_id id name parentId image", // Select only _id and username fields of the author
-          },
-          {
-            path: "children", // Populate the children field within children
-            model: Thread, // The model of the nested children (assuming it's the same "Thread" model)
-            populate: {
-              path: "author", // Populate the author field within nested children
+    if (from === "thread") {
+      const thread = await Thread.findById(threadId)
+        .populate({
+          path: "author",
+          model: User,
+          select: "_id id name image",
+        }) // Populate the author field with _id and username
+        .populate({
+          path: "children", // Populate the children field
+          populate: [
+            {
+              path: "author", // Populate the author field within children
               model: User,
               select: "_id id name parentId image", // Select only _id and username fields of the author
             },
-          },
-        ],
-      })
-      .exec();
+            {
+              path: "children", // Populate the children field within children
+              model: Thread, // The model of the nested children (assuming it's the same "Thread" model)
+              populate: {
+                path: "author", // Populate the author field within nested children
+                model: User,
+                select: "_id id name parentId image", // Select only _id and username fields of the author
+              },
+            },
+          ],
+        })
+        .exec();
 
-    return thread;
+      return thread;
+    } else {
+      const threads = await Thread.findById(threadId)
+        .populate({
+          path: "author",
+          model: User,
+          select: "_id id name image",
+        }) // Populate the author field with _id and username
+        .populate({
+          path: "children", // Populate the children field
+          populate: [
+            {
+              path: "author", // Populate the author field within children
+              model: User,
+              select: "_id id name parentId image", // Select only _id and username fields of the author
+            },
+            {
+              path: "children", // Populate the children field within children
+              model: Thread, // The model of the nested children (assuming it's the same "Thread" model)
+              populate: {
+                path: "author", // Populate the author field within nested children
+                model: User,
+                select: "_id id name parentId image", // Select only _id and username fields of the author
+              },
+            },
+          ],
+        })
+        .populate("likes")
+        .exec();
+
+      return threads;
+    }
   } catch (err) {
     console.error("Error while fetching thread:", err);
     throw new Error("Unable to fetch thread");
@@ -174,7 +206,7 @@ export async function likeAndUnlikeThread(threadId, userId, path) {
       await thread.save();
     }
 
-    revalidatePath(path)
+    revalidatePath(path);
   } catch (error) {
     console.error("Error while adding comment:", err);
     throw new Error("Unable to add comment");
@@ -229,10 +261,11 @@ export async function fetchReplyThreads(threadId) {
   }
   // console.log(childThreads)
 }
+
 export async function fetchLikesThreads(userId) {
   connectToDB();
   try {
-    const likesThreads = await Thread.find({likes: userId})
+    const likesThreads = await Thread.find({ likes: userId })
       .populate({
         path: "author",
         model: User,
@@ -258,7 +291,7 @@ export async function fetchLikesThreads(userId) {
         ],
       })
       .exec();
- console.log(likesThreads)
+    console.log(likesThreads);
 
     return likesThreads;
   } catch (error) {

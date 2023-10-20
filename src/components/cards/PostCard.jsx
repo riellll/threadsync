@@ -17,6 +17,7 @@ const PostCard = ({
   comments,
   isComment,
   likes,
+  onboarded,
 }) => {
   // console.log(likes.length)
   // console.log(comments.length)
@@ -62,8 +63,7 @@ const PostCard = ({
 
             <div className={`flex flex-col gap-3`}>
               <div className={`mt-5 flex flex-col gap-3`}>
-                <PostCardIcons threadId={id} userId={userId} likes={likes}/>
-
+                <PostCardIcons threadId={id} userId={userId} likes={likes} onboarded={onboarded}/>
                {/*      {isComment && comments.length > 0 && (
               <Link href={`/thread/${id}`}>
                 <p className="text-sm text-gray-500">
@@ -107,11 +107,11 @@ const PostCard = ({
 </>
         )}
         {likes.length > 0 && (
-                <div>
+                <Link href={`/likes/${id}`}>
                   <p className="mt-1 pl-2 text-sm text-gray-500">
                   {likes.length} Like{likes.length > 1 && "s"}
                   </p>
-                </div>
+                </Link>
             )} 
         </div>
 

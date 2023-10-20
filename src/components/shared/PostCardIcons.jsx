@@ -1,25 +1,36 @@
 "use client";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import heart from "../../../public/assets/heart-gray.svg";
-import reply from "../../../public/assets/reply.svg";
-import repost from "../../../public/assets/repost.svg";
-import share from "../../../public/assets/share.svg";
+// import heart from "../../../public/assets/heart-gray.svg";
+// import reply from "../../../public/assets/reply.svg";
+// import repost from "../../../public/assets/repost.svg";
+// import share from "../../../public/assets/share.svg";
 import { likeAndUnlikeThread } from "@/lib/actions/thread.action";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 // import donbel from "../../../public/don-bel.webp";
 
-const PostCardIcons = ({ threadId, userId, likes }) => {
+const PostCardIcons = ({ threadId, userId, likes, onboarded}) => {
   const pathname = usePathname()
+  const router = useRouter()
   
-/*   const likeUnlikeThread = async () => {
+ /*  const likeUnlikeThread = async () => {
   await likeAndUnlikeThread(threadId, userId, pathname)
   } */
+
   return (
     <div className="flex gap-3.5">
       <button 
-      onClick={async () => await likeAndUnlikeThread(threadId, userId, pathname)}
+      onClick={async () => {
+        if(!userId){
+          router.push('/onboarding')
+          return
+        }
+        /* if(!onboarded){
+          router.push('/onboarding')
+          return
+        } */
+        await likeAndUnlikeThread(threadId, userId, pathname)}}
       className={`flex text-center text-gray-900 dark:text-gray-200 px-1.5 hover:bg-red-200  hover:text-red-500 dark:hover:text-red-500 rounded-full`}>
         <svg
           className={`w-5 h-5 mt-1.5 ${likes.includes(userId) && 'fill-red-600 text-red-600'}`}

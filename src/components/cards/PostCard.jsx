@@ -23,7 +23,7 @@ const PostCard = ({
   // console.log(comments.length)
   return (
     <article
-      className={`flex w-full flex-col rounded-xl ${
+      className={`flex w-full flex-col rounded-lg ${
         isComment ? "p-2" : "bg-gray-200 p-7 dark:bg-gray-950"
       } `}
     >

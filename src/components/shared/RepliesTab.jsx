@@ -4,7 +4,7 @@ import PostCard from "../cards/PostCard"
 
 
 
-const RepliesTab = async ({ currentUserId, accountId, accountType }) => {
+const RepliesTab = async ({ currentUserId, accountId, userId, accountType }) => {
   const replies = await fetchReplyThreads(accountId)
   return (
     <section className="mt-9 flex flex-col gap-10">
@@ -13,6 +13,7 @@ const RepliesTab = async ({ currentUserId, accountId, accountType }) => {
           key={thread._id}
           id={thread._id}
           currentUserId={currentUserId}
+          userId={userId}
           parentId={thread.parentId}
           content={thread.text}
           contentImage={thread.img}
@@ -25,6 +26,7 @@ const RepliesTab = async ({ currentUserId, accountId, accountType }) => {
           }
           createdAt={thread.createdAt}
           comments={thread.children}
+          likes={thread.likes}
         />
       ))}
     </section>

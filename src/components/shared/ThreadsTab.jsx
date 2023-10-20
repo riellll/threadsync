@@ -2,7 +2,7 @@ import { fetchUserPosts } from "@/lib/actions/user.action";
 import PostCard from "../cards/PostCard";
 
 
-const ThreadsTab = async ({ currentUserId, accountId, accountType }) => {
+const ThreadsTab = async ({ currentUserId, accountId, userId, accountType }) => {
   const result = await fetchUserPosts(accountId);
  
   return (
@@ -12,6 +12,7 @@ const ThreadsTab = async ({ currentUserId, accountId, accountType }) => {
           key={thread._id}
           id={thread._id}
           currentUserId={currentUserId}
+          userId={userId}
           parentId={thread.parentId}
           content={thread.text}
           contentImage={thread.img}
@@ -26,6 +27,7 @@ const ThreadsTab = async ({ currentUserId, accountId, accountType }) => {
           }
           createdAt={thread.createdAt}
           comments={thread.children}
+          likes={thread.likes}
         />
       ))}
     </section>

@@ -9,6 +9,7 @@ import { fetchUser } from "@/lib/actions/user.action";
 import ThreadsTab from "@/components/shared/ThreadsTab";
 // import Link from "next/link";
 import RepliesTab from "@/components/shared/RepliesTab";
+import LikedTab from "@/components/shared/LikedTab";
 // import { fetchReplyThreads } from "@/lib/actions/thread.action";
 
 export async function generateMetadata({ params, searchParams }) {
@@ -28,7 +29,8 @@ const page = async ({params}) => {
   const userInfo = await fetchUser(params.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
 
-
+  const currentLogIn = await fetchUser(session?.user.id);
+  // console.log(currentLogIn._id.toString())
   return (
     <section>
       <ProfileHeader
@@ -74,6 +76,7 @@ const page = async ({params}) => {
               <ThreadsTab
                 currentUserId={session?.user.id}
                 accountId={userInfo.id}
+                userId={currentLogIn._id.toString()}
                 accountType="User"
                 />
                 </div>
@@ -84,12 +87,21 @@ const page = async ({params}) => {
                <RepliesTab 
                 currentUserId={session?.user.id}
                 accountId={params.id}
+                userId={currentLogIn._id.toString()}
                 accountType="User"/>
             </TabsContent>
             <TabsContent
               value='liked'
             >
-              <div><h1 className="mb-4 pt-5 text-center text-2xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Liked Tab</span> Is Under Construction</h1></div>
+              {session?.user.id === params.id ? 
+              <LikedTab
+              currentUserId={session?.user.id}
+              accountId={params.id}
+              userId={currentLogIn._id.toString()}
+              accountType="User"
+              /> : 
+              <div><h1 className="mb-4 pt-5 text-center text-2xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">User <span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Liked Tab</span> Is Private</h1></div>
+              }
             </TabsContent>
         </Tabs>
       </div>

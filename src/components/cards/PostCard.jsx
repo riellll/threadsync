@@ -8,6 +8,7 @@ import PostCardIcons from "../shared/PostCardIcons";
 const PostCard = ({
   id,
   currentUserId,
+  userId,
   parentId,
   content,
   contentImage,
@@ -15,8 +16,10 @@ const PostCard = ({
   createdAt,
   comments,
   isComment,
+  likes,
 }) => {
-  // console.log(author)
+  // console.log(likes.length)
+  // console.log(comments.length)
   return (
     <article
       className={`flex w-full flex-col rounded-xl ${
@@ -59,7 +62,7 @@ const PostCard = ({
 
             <div className={`flex flex-col gap-3`}>
               <div className={`mt-5 flex flex-col gap-3`}>
-                <PostCardIcons threadId={id}/>
+                <PostCardIcons threadId={id} userId={userId} likes={likes}/>
 
                {/*      {isComment && comments.length > 0 && (
               <Link href={`/thread/${id}`}>
@@ -82,8 +85,9 @@ const PostCard = ({
     />}
       </div>
 
-      {!isComment && comments.length > 0 && (
       <div className="ml-1 mt-3 flex items-center gap-2">
+      {!isComment && comments.length > 0 && (
+        <>
         {comments.slice(0, 2).map((comment, index) => (
           <Image
             key={index}
@@ -100,13 +104,19 @@ const PostCard = ({
             {comments.length} repl{comments.length > 1 ? "ies" : "y"}
           </p>
         </Link>}
-       {/*  <Link href={`/thread/${id}`}>
-          <p className="mt-1 text-sm text-gray-500">
-            {comments.length} Like{comments.length > 1 && "s"}
-          </p>
-        </Link> */}
-      </div>
-    )}
+</>
+        )}
+        {likes.length > 0 && (
+                <div>
+                  <p className="mt-1 pl-2 text-sm text-gray-500">
+                  {likes.length} Like{likes.length > 1 && "s"}
+                  </p>
+                </div>
+            )} 
+        </div>
+
+
+
 
       {/*  {!isComment && community && (
     <Link

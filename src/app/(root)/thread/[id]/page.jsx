@@ -27,12 +27,14 @@ const page = async ({ params }) => {
         <PostCard
           id={thread._id}
           currentUserId={session?.user.id}
+          userId={userInfo?._id.toString()}
           parentId={thread.parentId}
           content={thread.text}
           contentImage={thread.img}
           author={thread.author}
           createdAt={thread.createdAt}
           comments={thread.children}
+          likes={thread.likes}
         />
       </div>
 
@@ -50,12 +52,14 @@ const page = async ({ params }) => {
             key={childItem._id}
             id={childItem._id}
             currentUserId={session?.user.id}
+            userId={userInfo?._id.toString()}
             parentId={childItem.parentId}
             content={childItem.text}
             author={childItem.author}
             community={childItem.community}
             createdAt={childItem.createdAt}
             comments={childItem.children}
+            likes={childItem.likes}
             isComment={true}
           />
         ))}

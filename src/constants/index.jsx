@@ -11,6 +11,11 @@ export const sidebarLinks = [
       label: "Search",
     },
     {
+      imgURL: "M11 4C5.5-1.5-1.5 5.5 4 11l7 7 7-7c5.458-5.458-1.542-12.458-7-7Z",
+      route: "/activity",
+      label: "Activity",
+    },
+    {
       imgURL: "M10 5.757v8.486M5.757 10h8.486M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z",
       route: "/create-post",
       label: "Create Post",
@@ -30,7 +35,7 @@ export const sidebarLinks = [
   export const profileTabs = [
     { value: "threads", label: "Threads", icon: "/assets/reply.svg" },
     { value: "replies", label: "Replies", icon: "/assets/members.svg" },
-    { value: "liked", label: "Liked", icon: "/assets/heart-gray.svg" },
+    { value: "liked", label: "Likes", icon: "/assets/heart-gray.svg" },
   ];
   
   export const communityTabs = [

@@ -33,9 +33,7 @@ const Bottombar = () => {
                       aria-hidden="true"
                       xmlns="http://www.w3.org/2000/svg"
                       fill={"none"}
-                      viewBox={
-                        item.label == "profile" ? "0 0 14 18" : "0 0 20 20"
-                      }
+                      viewBox={`${item.label == "Profile" ? "0 0 14 18" : item.label == "Activity" ? "0 0 21 19" :"0 0 20 20"}`}
                     >
                       <path
                         stroke="currentColor"

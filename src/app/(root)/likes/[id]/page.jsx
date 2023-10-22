@@ -20,7 +20,7 @@ const page = async ({ params }) => {
     <section>
       <div className="flex gap-10">
        <BackArrow/>
-        <h1 className="text-3xl font-bold text-black dark:text-gray-200">
+        <h1 className="text-2xl font-bold text-black dark:text-gray-200">
           {`${thread.likes.length} Like${thread.likes.length !== 1 ? 's' : ''}`}
         </h1>
       </div>

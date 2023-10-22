@@ -5,7 +5,7 @@ import profile from "../../../public/assets/profile.svg";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 
-const Comment = ({ threadId, currentUserImg, currentUserId, onboarded}) => {
+const Comment = ({ threadId, currentUserImg, currentUserId, threadAuthor}) => {
   const pathname = usePathname();
       const router = useRouter()
 /*   console.log(
@@ -55,7 +55,7 @@ const Comment = ({ threadId, currentUserImg, currentUserId, onboarded}) => {
           id="chat"
           rows="1"
           className="block mx-4 p-2.5 w-full text-sm text-gray-800 bg-white rounded-lg border border-gray-300  outline-none ring-0 shadow-none focus:shadow-none focus:outline-none border-none focus:border-none focus:ring-0 dark:bg-black dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-          placeholder="Your message..."
+          placeholder={`Reply to ${threadAuthor}`}
         ></textarea>
         <button
           type="submit"

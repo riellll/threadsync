@@ -24,9 +24,9 @@ const page = async ({ params }) => {
 
   return (
     <section className="relative">
-       <div className="flex gap-5 pb-10">
+       <div className="flex gap-5 pb-5">
        <BackArrow/>
-        <h1 className="text-xl font-bold text-gray-800 dark:text-gray-200">
+        <h1 className="text-xl pt-1 font-bold text-gray-800 dark:text-gray-200">
           Back
         </h1>
       </div>
@@ -51,7 +51,7 @@ const page = async ({ params }) => {
           threadId={params.id}
           currentUserImg={userInfo?.image}
           currentUserId={userInfo?._id.toString()}
-          onboarded={userInfo?.onboarded}
+          threadAuthor={thread.author.name}
         />
       </div>
 

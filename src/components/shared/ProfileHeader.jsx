@@ -34,7 +34,7 @@ const ProfileHeader = ({
             <p className="text-base-medium dark:text-gray-400 text-gray-900">@{username}</p>
           </div>
         </div>
-        {/* {accountId === authUserId && type !== "Community" && ( */}
+        {accountId === authUserId && type !== "Community" && (
         <Link href="/profile/edit">
           <div className="flex cursor-pointer gap-3 rounded-lg bg-[#24292F]/90 px-4 py-2">
             <Image src="/assets/edit.svg" alt="logout" width={16} height={16} />
@@ -42,7 +42,7 @@ const ProfileHeader = ({
             <p className="text-gray-200 max-sm:hidden">Edit</p>
           </div>
         </Link>
-        {/* )} */}
+        )}
       </div>
 
       <p className="mt-6 max-w-lg text-base-regular dark:text-gray-400 text-gray-900">{bio}</p>

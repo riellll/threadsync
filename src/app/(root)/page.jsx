@@ -14,7 +14,7 @@ export default async function Home({searchParams}) {
   return (
     <>
      <h1 className="text-4xl text-black dark:text-gray-200 font-bold text-left">Home</h1>
-    <section className="my-9 flex flex-col gap-10">
+    <section className="my-9 flex flex-col sm:gap-10">
     {result.posts.length === 0 ? (
           <p className='no-result'>No threads found</p>
         ) : (

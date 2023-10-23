@@ -1,15 +1,25 @@
 "use client";
 import Image from "next/image";
-import donbel from "../../../public/don-bel.webp";
-import { useState } from "react";
+// import donbel from "../../../public/don-bel.webp";
+import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { createThread } from "@/lib/actions/thread.action";
+import { Button } from "@/components/ui/button"
+import { useToast } from "@/components/ui/use-toast"
+import { ToastAction } from "@/components/ui/toast"
+
+import Spinner from "../shared/Spinner";
 
 const CreatePost = ({ userId }) => {
   const [userImage, setUserImage] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isPosted, setIsPosted] = useState(false);
+  const ref = useRef(null);
+
 
   const pathname = usePathname();
   const router = useRouter();
+
 
   const fileImage = async (e) => {
     // console.log(e.target.files[0]);
@@ -33,6 +43,8 @@ const CreatePost = ({ userId }) => {
       return;
     }
 
+    setIsLoading(true)
+
     formData.append("file", userImage[0]);
     formData.append("upload_preset", "threadsync-image-upload_preset");
     formData.append("aoi_key", process.env.CLOUDINARY_API_KEY);
@@ -51,12 +63,18 @@ const CreatePost = ({ userId }) => {
     const path = pathname;
 
     await createThread({ text, img, author, path });
-    router.push("/");
     // console.log(formData.get("message"));
+    setTimeout(() => {
+      setIsPosted(true)
+      setIsLoading(false) 
+      ref.current?.reset()
+      setTimeout(() => {router.push("/")}, 1000)
+    }, 5000);
   };
   return (
     <>
       <form
+        ref={ref}
         action={handleSubmit}
         className="mt-10 flex flex-col justify-start gap-10"
       >
@@ -100,10 +118,17 @@ const CreatePost = ({ userId }) => {
         </div>
         <button
           type="submit"
-          className="text-white bg-gradient-to-r from-cyan-500 via-cyan-600 to-cyan-700 hover:bg-gray-900 hover:from-gray-900 hover:via-gray-800 hover:to-gray-900 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:focus:ring-gray-500 dark:hover:bg-[#050708]/30 mr-2 mb-2 justify-center"
+          disabled={isLoading && true}
+          className={`text-white bg-gradient-to-r ${isLoading ? 'from-gray-900 via-gray-800 to-gray-900' : 'from-cyan-500 via-cyan-600 to-cyan-700 hover:bg-cyan-900 hover:from-cyan-900 hover:via-cyan-800 hover:to-cyan-900'} font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center dark:hover:bg-[#050708]/30 mr-2 mb-2 justify-center`}
         >
-          Post Thread
+         {isLoading ? <Spinner/> : 'Post Thread'}
         </button>
+        {isPosted && <div class="flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
+  <span class="sr-only">Info</span>
+  <div>
+    <span class="font-medium">Success Post!</span>
+  </div>
+</div>}
       </form>
     </>
   );

@@ -7,7 +7,7 @@ const ThreadsTab = async ({ currentUserId, accountId, userId, accountType }) => 
  
   return (
     <section className="mt-9 flex flex-col gap-10">
-      {result.threads.map((thread) => (
+      {result.threads.reverse().map((thread) => (
         <PostCard
           key={thread._id}
           id={thread._id}

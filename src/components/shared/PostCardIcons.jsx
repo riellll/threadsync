@@ -44,7 +44,7 @@ const PostCardIcons = ({ threadId, userId, likes, onboarded}) => {
     </TooltipContent>
   </Tooltip>
   <Tooltip>
-    <TooltipTrigger onClick={() => router.push(`/thread/${threadId}`)} className="text-center text-xl cursor-pointer text-gray-600 dark:text-gray-400 hover:bg-blue-200 hover:text-blue-500 dark:hover:text-blue-600 dark:hover:bg-blue-300 px-1.5 rounded-full">
+    <TooltipTrigger onClick={() => router.push(`/thread/${threadId}`)} className="text-center text-xl cursor-pointer text-gray-600 dark:text-gray-500 hover:bg-blue-200 hover:text-blue-500 dark:hover:text-blue-600 dark:hover:bg-blue-300 px-1.5 rounded-full">
         <RiMessage2Line/>
       </TooltipTrigger>
     <TooltipContent>
@@ -52,7 +52,7 @@ const PostCardIcons = ({ threadId, userId, likes, onboarded}) => {
     </TooltipContent>
   </Tooltip>
   <Tooltip>
-    <TooltipTrigger className="text-center text-[28px] cursor-pointer text-gray-600 dark:text-gray-500 hover:bg-blue-200 hover:text-blue-500 dark:hover:text-blue-600 dark:hover:bg-blue-300 px-1 rounded-full">
+    <TooltipTrigger className="text-center text-[28px] cursor-pointer text-gray-600 dark:text-gray-500 hover:bg-green-200 hover:text-green-500 dark:hover:text-green-600 dark:hover:bg-green-300 px-1 rounded-full">
     <BiRepost/>
       </TooltipTrigger>
     <TooltipContent>

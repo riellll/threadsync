@@ -20,7 +20,7 @@ const page = async () => {
   return (
     <>
     <h1 className='text-3xl font-bold text-black dark:text-gray-200 pb-10'>Create Post</h1>
-    <CreatePost userId={userInfo?._id.toString()}/>
+    <CreatePost userId={userInfo?._id.toString()} accId={session?.user.id}/>
     </>
   )
 }

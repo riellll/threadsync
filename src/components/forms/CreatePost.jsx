@@ -4,18 +4,18 @@ import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { createThread } from "@/lib/actions/thread.action";
-import { Button } from "@/components/ui/button"
 import { useToast } from "@/components/ui/use-toast"
+import { Button } from "@/components/ui/button"
 import { ToastAction } from "@/components/ui/toast"
 
 import Spinner from "../shared/Spinner";
 
-const CreatePost = ({ userId }) => {
+const CreatePost = ({ userId, accId }) => {
   const [userImage, setUserImage] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [isPosted, setIsPosted] = useState(false);
-  const ref = useRef(null);
 
+  const ref = useRef(null);
+  const { toast } = useToast()
 
   const pathname = usePathname();
   const router = useRouter();
@@ -65,10 +65,14 @@ const CreatePost = ({ userId }) => {
     await createThread({ text, img, author, path });
     // console.log(formData.get("message"));
     setTimeout(() => {
-      setIsPosted(true)
       setIsLoading(false) 
       ref.current?.reset()
-      setTimeout(() => {router.push("/")}, 1000)
+      toast({
+        title: "Posted!",
+        description: "Click view to see your post.",
+        action: <ToastAction altText="View" onClick={() => router.push(`profile/${accId}`)}>View</ToastAction>,
+      })
+      // setTimeout(() => {router.push("/")}, 1000)
     }, 5000);
   };
   return (
@@ -123,12 +127,6 @@ const CreatePost = ({ userId }) => {
         >
          {isLoading ? <Spinner/> : 'Post Thread'}
         </button>
-        {isPosted && <div class="flex items-center p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
-  <span class="sr-only">Info</span>
-  <div>
-    <span class="font-medium">Success Post!</span>
-  </div>
-</div>}
       </form>
     </>
   );

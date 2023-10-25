@@ -59,7 +59,7 @@ const DeleteThread = ({
             <DropdownMenuContent>
               <DropdownMenuItem>
                 {" "}
-                <DialogTrigger>Edit</DialogTrigger>
+                <DialogTrigger><div className="grow cursor-pointer">Edit</div></DialogTrigger>
               </DropdownMenuItem>
               <DropdownMenuItem>
                 {" "}

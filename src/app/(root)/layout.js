@@ -6,6 +6,7 @@ import Bottombar from "@/components/shared/Bottombar";
 import Providers from "@/lib/ThemeProviders";
 import AuthProvider from "@/lib/AuthProvider";
 import { Toaster } from "@/components/ui/toaster";
+import { NextProviders } from "@/lib/NextUIProvider";
 
 export const metadata = {
   title: "TheardSync",
@@ -18,6 +19,7 @@ export default function RootLayout({ children }) {
       <body>
         <AuthProvider>
           <Providers>
+            <NextProviders>
             <Sidebar />
             <main className="flex">
               <Navbar />
@@ -29,6 +31,7 @@ export default function RootLayout({ children }) {
               </section>
             </main>
             <Bottombar />
+            </NextProviders>
           </Providers>
         </AuthProvider>
       </body>

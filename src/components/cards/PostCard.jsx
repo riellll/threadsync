@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import DeleteThread from "../forms/DeleteThread";
 import PostCardIcons from "../shared/PostCardIcons";
+import ThreadInfo from "../shared/EditThread";
 
 const PostCard = ({
   id,
@@ -84,13 +85,15 @@ const PostCard = ({
         </div>
 
         {
-          <DeleteThread
-            threadId={id.toString()}
-            currentUserId={currentUserId}
-            authorId={author.id}
-            parentId={parentId}
-            isComment={isComment}
-          />
+          <>
+            <DeleteThread
+              threadId={id.toString()}
+              currentUserId={currentUserId}
+              authorId={author.id}
+              parentId={parentId}
+              isComment={isComment}
+            />
+          </>
         }
       </div>
 

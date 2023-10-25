@@ -72,7 +72,7 @@ const DeleteThread = ({
               <DialogHeader>
                 <DialogTitle>Edit Post</DialogTitle>
                 <DialogDescription>
-                  Make changes to your post here. Click edit when you're done.
+                  Make changes to your post here. Click edit when you&#39;re done.
                 </DialogDescription>
               </DialogHeader>
               <div>

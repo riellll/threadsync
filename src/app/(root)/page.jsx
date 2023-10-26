@@ -11,6 +11,7 @@ export default async function Home({searchParams}) {
   const session = await getServerSession(authOptions);
   const userInfo = await fetchUser(session?.user.id);
  
+
   return (
     <>
      <h1 className="text-4xl text-black dark:text-gray-200 font-bold text-left">Home</h1>

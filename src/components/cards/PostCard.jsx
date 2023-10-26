@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import DeleteThread from "../forms/DeleteThread";
 import PostCardIcons from "../shared/PostCardIcons";
-import ThreadInfo from "../shared/EditThread";
+
 
 const PostCard = ({
   id,
@@ -19,8 +19,36 @@ const PostCard = ({
   likes,
   onboarded,
 }) => {
-  // console.log(likes.length)
+
+  const formatter = new Intl.RelativeTimeFormat(undefined, {
+    numeric: "auto",
+  })
+  const DIVISIONS = [
+    { amount: 60, name: "seconds" },
+    { amount: 60, name: "minutes" },
+    { amount: 24, name: "hours" },
+    { amount: 7, name: "days" },
+    { amount: 4.34524, name: "weeks" },
+    { amount: 12, name: "months" },
+    { amount: Number.POSITIVE_INFINITY, name: "years" },
+  ]
+  
+  function formatTimeAgo(date) {
+    let duration = (date - new Date()) / 1000
+    for (let i = 0; i < DIVISIONS.length; i++) {
+      const division = DIVISIONS[i]
+      // console.log((Math.abs(duration) < division.amount))
+      if (Math.abs(duration) < division.amount) {
+        const dt = formatter.format(Math.round(duration), division.name).split(' ')
+        return (`${dt[0] === 'last' ? 1 : dt[0]}${dt[1] === 'week' ? `${dt[1].charAt(0)}` : dt[1].charAt(0)}`)
+      }
+      duration /= division.amount
+    }
+  } 
+
+  // console.log(formatter.format(now))
   // console.log(comments.length)
+
   return (
     <article
       className={`flex w-full flex-col sm:rounded-lg ${
@@ -51,7 +79,7 @@ const PostCard = ({
               </h4>
             </Link>
 
-            <p className="mt-2 text-small-regular pb-3 text-black dark:text-gray-200">
+            <p className="mt-2 text-small-regular pb-3 text-ellipsis text-black dark:text-gray-200">
               {content}
             </p>
             {contentImage && (
@@ -86,13 +114,18 @@ const PostCard = ({
 
         {
           <>
+          <div className="flex gap-3">
+          <p className="text-sm text-muted-foreground">
+                  {formatTimeAgo(new Date(createdAt))}
+                </p>
             <DeleteThread
               threadId={id.toString()}
               currentUserId={currentUserId}
               authorId={author.id}
               parentId={parentId}
               isComment={isComment}
-            />
+              />
+              </div>
           </>
         }
       </div>

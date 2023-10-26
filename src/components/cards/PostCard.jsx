@@ -51,10 +51,10 @@ const PostCard = ({
 
   return (
     <article
-      className={`flex w-full flex-col sm:rounded-lg ${
+      className={`flex w-full flex-col ${
         isComment
           ? "p-2"
-          : "sm:bg-gray-200 bg-white sm:p-7 sm:dark:bg-gray-950 dark:bg-black sm:border-none border-b border-gray-800 dark:border-gray-200 py-5"
+          : "bg-white sm:p-7 dark:bg-black sm:border-none border-b border-gray-800 dark:border-gray-200 py-5"
       } `}
     >
       <div className="flex items-start justify-between">

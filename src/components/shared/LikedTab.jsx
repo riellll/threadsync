@@ -5,7 +5,7 @@ import PostCard from '../cards/PostCard'
 const LikedTab = async ({ currentUserId, accountId, userId, accountType }) => {
   const likes = await fetchLikesThreads(userId)
   return (
-    <section className="mt-9 flex flex-col gap-10">
+    <section className="mt-9 grid grid-cols-1 divide-y divide-solid">
     {likes.map((thread) => (
       <PostCard
         key={thread._id}

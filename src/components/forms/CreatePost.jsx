@@ -80,7 +80,7 @@ const CreatePost = ({ userId, accId }) => {
       <form
         ref={ref}
         action={handleSubmit}
-        className="mt-10 flex flex-col justify-start gap-10"
+        className="mt-5 flex flex-col justify-start gap-10"
       >
         <div>
           <label

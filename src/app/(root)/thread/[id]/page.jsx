@@ -55,7 +55,7 @@ const page = async ({ params }) => {
         />
       </div>
 
-      <div className="flex flex-col gap-2 mt-10">
+      <div className="grid grid-cols-1 divide-y divide-solid mt-10">
         {thread.children.map((childItem) => (
           <PostCard
             key={childItem._id}

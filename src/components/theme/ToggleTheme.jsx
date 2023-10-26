@@ -31,8 +31,8 @@ const ToggleTheme = () => {
   return (
     <Menubar>
       <MenubarMenu>
-        <MenubarTrigger>
-          <div className="text-black dark:text-white cursor-pointer text-xl">
+        <MenubarTrigger className='bg-none'>
+          <div className="text-black bg-none dark:text-white cursor-pointer text-xl">
             {resolvedTheme === 'dark' ? <BsFillMoonStarsFill/> : <BsFillSunFill/>}
           </div>
         </MenubarTrigger>

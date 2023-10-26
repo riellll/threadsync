@@ -7,7 +7,7 @@ import PostCard from "../cards/PostCard"
 const RepliesTab = async ({ currentUserId, accountId, userId, accountType }) => {
   const replies = await fetchReplyThreads(accountId)
   return (
-    <section className="mt-9 flex flex-col gap-10">
+    <section className="mt-9 grid grid-cols-1 divide-y divide-solid">
       {replies.map((thread) => (
         <PostCard
           key={thread._id}

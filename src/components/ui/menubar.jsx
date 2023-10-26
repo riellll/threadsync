@@ -19,7 +19,7 @@ const Menubar = React.forwardRef(({ className, ...props }, ref) => (
   <MenubarPrimitive.Root
     ref={ref}
     className={cn(
-      "flex h-10 items-center bg-gray-200 rounded-md dark:bg-gray-950",
+      "flex h-10 items-center rounded-md",
       className
     )}
     {...props} />
@@ -30,7 +30,7 @@ const MenubarTrigger = React.forwardRef(({ className, ...props }, ref) => (
   <MenubarPrimitive.Trigger
     ref={ref}
     className={cn(
-      "flex cursor-default bg-gray-200 dark:bg-gray-950 select-none items-center rounded-sm px-3 py-1.5 text-sm font-medium outline-none focus:bg-gray-200 focus:text-accent-foreground data-[state=open]:bg-gray-200 data-[state=open]:text-accent-foreground",
+      "flex cursor-default select-none items-center rounded-sm px-3 py-1.5 text-sm font-medium outline-none focus:text-accent-foreground data-[state=open]:text-accent-foreground",
       className
     )}
     {...props} />
@@ -41,7 +41,7 @@ const MenubarSubTrigger = React.forwardRef(({ className, inset, children, ...pro
   <MenubarPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      "flex cursor-default select-none bg-gray-200 items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
+      "flex cursor-default select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[state=open]:bg-accent data-[state=open]:text-accent-foreground",
       inset && "pl-8",
       className
     )}

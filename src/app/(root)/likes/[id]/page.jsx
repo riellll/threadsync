@@ -3,7 +3,7 @@ import UserCard from "@/components/cards/UserCard";
 import BackArrow from "@/components/shared/BackArrow";
 import { fetchThreadById } from "@/lib/actions/thread.action";
 import { getServerSession } from "next-auth";
-import Link from "next/link";
+// import Link from "next/link";
 import { redirect } from "next/navigation";
 
 const page = async ({ params }) => {

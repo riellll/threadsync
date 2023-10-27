@@ -23,7 +23,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import ThreadInfo from "../shared/EditThread";
+import ThreadInfo from "./EditThread";
 import {
   Dialog,
   DialogContent,
@@ -32,7 +32,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import EditThread from "../shared/EditThread";
 import Image from "next/image";
 
 const DeleteThread = ({
@@ -51,7 +50,6 @@ const DeleteThread = ({
   return (
     <>
       <AlertDialog>
-        <Dialog>
           <DropdownMenu>
             <DropdownMenuTrigger>
               <BsThreeDots />
@@ -59,7 +57,9 @@ const DeleteThread = ({
             <DropdownMenuContent>
               <DropdownMenuItem>
                 {" "}
-                <DialogTrigger><div className="grow cursor-pointer">Edit</div></DialogTrigger>
+               <div className="grow cursor-pointer"
+               onClick={() => router.push(`/create-post/edit-post/${threadId}`)}
+               >Edit</div>
               </DropdownMenuItem>
               <DropdownMenuItem>
                 {" "}
@@ -68,24 +68,6 @@ const DeleteThread = ({
                 </AlertDialogTrigger>
               </DropdownMenuItem>
             </DropdownMenuContent>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Edit Post</DialogTitle>
-                <DialogDescription>
-                  Make changes to your post here. Click edit when you&#39;re done.
-                </DialogDescription>
-              </DialogHeader>
-              <div>
-              <h1 className="mb-4 pt-5 text-center text-2xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"><span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">Edit Post</span> Is Under Construction 🛠⛑</h1>
-              <Image
-                src={consImage}
-                alt="heart"
-                width={500}
-                height={500}
-                className="w-full h-auto"
-              />
-        </div>
-            </DialogContent>
             <AlertDialogContent>
               <AlertDialogHeader>
                 <AlertDialogTitle>Delete this post?</AlertDialogTitle>
@@ -117,7 +99,6 @@ const DeleteThread = ({
               </AlertDialogFooter>
             </AlertDialogContent>
           </DropdownMenu>
-        </Dialog>
       </AlertDialog>
     </>
   );

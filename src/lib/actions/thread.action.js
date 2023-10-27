@@ -50,6 +50,23 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
   return parse;
 }
 
+export async function updateThread({ text, img, threadId, path }) {
+  const body = {
+    text,
+    img,
+  };
+  try {
+    connectToDB();
+
+    await Thread.findByIdAndUpdate(threadId, body);
+
+    // Update User model
+
+    revalidatePath(path);
+  } catch (error) {
+    throw new Error(`Failed to create thread: ${error.message}`);
+  }
+}
 export async function createThread({ text, img, author, path }) {
   try {
     connectToDB();
@@ -83,6 +100,8 @@ export async function createThread({ text, img, author, path }) {
     throw new Error(`Failed to create thread: ${error.message}`);
   }
 }
+
+
 
 export async function fetchThreadById(threadId, from) {
   connectToDB();
@@ -148,6 +167,21 @@ export async function fetchThreadById(threadId, from) {
 
       return threads;
     }
+  } catch (err) {
+    console.error("Error while fetching thread:", err);
+    throw new Error("Unable to fetch thread");
+  }
+}
+
+export async function fetchThreadByIdEdit(threadId) {
+  connectToDB();
+  //    console.log(threadId)
+  try {
+
+    const thread = await Thread.findById(threadId);
+
+      return thread;
+
   } catch (err) {
     console.error("Error while fetching thread:", err);
     throw new Error("Unable to fetch thread");
@@ -318,7 +352,7 @@ export async function deleteThread(id, path) {
     connectToDB();
     console.log(id, path);
     // Find the thread to be deleted (the main thread)
-    const mainThread = await Thread.findById(id);
+    const mainThread = await fetchThreadById(id);
     // .populate("author community");
 
     if (!mainThread) {

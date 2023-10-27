@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { createThread } from "@/lib/actions/thread.action";
 import { useToast } from "@/components/ui/use-toast"
-import { Button } from "@/components/ui/button"
 import { ToastAction } from "@/components/ui/toast"
 
 import Spinner from "../shared/Spinner";

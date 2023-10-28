@@ -29,7 +29,7 @@ const page = async ({searchParams}) => {
   //  console.log(result)
   return (
     <section>
-      <h1 className="text-3xl font-bold text-black dark:text-gray-200 pb-10">Search</h1>
+      {/* <h1 className="text-3xl font-bold text-black dark:text-gray-200 pb-10">Search</h1> */}
 
     <Searchbar/>
 

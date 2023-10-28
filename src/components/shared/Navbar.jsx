@@ -8,7 +8,7 @@ const Navbar = async () => {
   const session = await getServerSession(authOptions);
   //  console.log(session);
   return (
-    <nav className="flex fixed top-0 z-50 w-full sm:bg-gray-300 sm:dark:bg-gray-950 backdrop-blur-lg items-center border-gray-300">
+    <nav className="flex fixed top-0 z-50 w-full backdrop-blur-lg items-center border-gray-300">
       <div className="w-56 px-5 md:py-4 py-2.5 max-lg:w-16">
         {" "}
         <Link href="#" className="flex items-center">

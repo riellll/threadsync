@@ -36,7 +36,7 @@ const Searchbar = () => {
         id="default-search"
         // value={search}
         onChange={(e) => router.push(`/search?q=${e.target.value}`)}
-        className="block w-full p-4 pl-10 text-gray-800 border text-xl border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+        className="block w-full p-4 pl-10 text-gray-800 border text-xl outline-none border-gray-300 rounded-lg bg-gray-50 dark:bg-gray-700 dark:placeholder-gray-400 dark:text-white"
         placeholder="Search..."
       />
     </div>

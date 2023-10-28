@@ -12,7 +12,7 @@ const Sidebar = () => {
   return (
     <>
       <aside
-        className="fixed top-16 left-0 z-40 w-56 h-screen transition-transform -translate-x-full md:translate-x-0 max-lg:w-16"
+        className="fixed top-16 left-0 z-40 w-48 h-screen transition-transform -translate-x-full md:translate-x-0 max-lg:w-16"
         aria-label="Sidebar"
       >
         <div className="h-full px-3 py-4 mt-3 overflow-y-auto border-gray-300">

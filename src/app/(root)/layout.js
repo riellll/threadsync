@@ -23,7 +23,7 @@ export default function RootLayout({ children }) {
             <Sidebar />
             <main className="flex">
               <Navbar />
-              <section className="flex min-h-screen flex-1 flex-col items-center px-6 pb-10 pt-24 max-md:pb-32 sm:px-10 lg:pl-16 dark:bg-black">
+              <section className="flex min-h-screen flex-1 flex-col items-center px-6 pb-10 pt-24 max-md:pb-32 sm:px-20 lg:pl-16 dark:bg-black">
                 <div className="w-full max-w-4xl md:pl-12 lg:pl-40 xl:pl-0">
                   {children}
                   <Toaster />

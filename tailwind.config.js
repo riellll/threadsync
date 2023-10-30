@@ -6,6 +6,7 @@ module.exports = {
   content: [
     "./pages/**/*.{js,jsx}",
     "./components/**/*.{js,jsx}",
+    "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
     "./app/**/*.{js,jsx}",
     "./src/**/*.{js,jsx}",
   ],

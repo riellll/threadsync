@@ -45,7 +45,7 @@ const Sidebar = () => {
                         d={item.imgURL}
                       />
                     </svg>
-                    <span className="ml-3 max-lg:hidden pt-2">{item.label}</span>
+                    <span className="ml-3 max-lg:hidden pt-1">{item.label}</span>
                   </Link>
                 </li>
               );

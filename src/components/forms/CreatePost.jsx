@@ -38,16 +38,16 @@ const CreatePost = ({ userId, accId }) => {
   };
 
   const handleSubmit = async (formData) => {
-    if (!formData.get("message")) {
+    if (!formData.get("message") && !userImage[0]) {
+      console.log('no content')
       return;
     }
 
-    setIsLoading(true)
-
+    
     formData.append("file", userImage[0]);
     formData.append("upload_preset", "threadsync-image-upload_preset");
     formData.append("aoi_key", process.env.CLOUDINARY_API_KEY);
-
+    
     const results = await fetch(
       "https://api.cloudinary.com/v1_1/dwiiuizwi/image/upload",
       {
@@ -56,15 +56,18 @@ const CreatePost = ({ userId, accId }) => {
       }
     ).then((r) => r.json());
 
+    setIsLoading(true)
+    
     const author = userId;
     const text = formData.get("message");
     const img = results.url || '';
     const path = pathname;
 
     await createThread({ text, img, author, path });
-    // console.log(formData.get("message"));
+    // console.log(formData.get("message"), userImage[0]);
     setTimeout(() => {
       setIsLoading(false) 
+      setUserImage([]);
       ref.current?.reset()
       toast({
         title: "Posted!",
@@ -110,6 +113,7 @@ const CreatePost = ({ userId, accId }) => {
             onChange={fileImage}
           />
           {userImage[0] && (
+            <div className="relative w-fit">
             <Image
               src={userImage[0]}
               alt="heart"
@@ -117,6 +121,14 @@ const CreatePost = ({ userId, accId }) => {
               height={500}
               className="w-96 h-auto"
             />
+            <div className="absolute top-0 right-0 rounded-full p-4 py-2 m-2 bg-gray-500/50 cursor-pointer hover:bg-gray-600"
+            onClick={() => setUserImage([])}
+            >
+      <p className="text-gray-200">
+        X
+      </p>
+             </div>
+             </div>
           )}
         </div>
         <button

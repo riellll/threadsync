@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import DeleteThread from "../forms/DeleteThread";
 import PostCardIcons from "../shared/PostCardIcons";
+import ImageModal from "../shared/ImageModal";
 
 
 const PostCard = ({
@@ -79,17 +80,20 @@ const PostCard = ({
               </h4>
             </Link>
 
-            <p className="mt-2 text-small-regular pb-3 text-ellipsis text-black dark:text-gray-200">
+            <p className="mt-2 text-small-regular pb-3 text-ellipsis text-black dark:text-gray-200 break-all ...">
               {content}
             </p>
             {contentImage && (
-              <Image
+              <>
+              {/* <Image
                 src={contentImage}
                 alt="heart"
                 width={500}
                 height={500}
                 className="w-96 h-auto"
-              />
+              /> */}
+              <ImageModal image={contentImage}/>
+                </>
             )}
 
             <div className={`flex flex-col gap-3`}>

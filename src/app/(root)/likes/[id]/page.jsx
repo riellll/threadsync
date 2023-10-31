@@ -1,7 +1,7 @@
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import UserCard from "@/components/cards/UserCard";
 import BackArrow from "@/components/shared/BackArrow";
-import { fetchThreadById } from "@/lib/actions/thread.action";
+import { fetchThreadById, fetchThreadByIdEdit } from "@/lib/actions/thread.action";
 import { getServerSession } from "next-auth";
 // import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -15,7 +15,7 @@ const page = async ({ params }) => {
 
   const thread = await fetchThreadById(params.id, 'like');
   if (!thread) throw new Error("Error to fetch Data");
-  // console.log(thread);
+  console.log(thread);
   return (
     <section>
       <div className="flex gap-10">

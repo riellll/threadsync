@@ -76,6 +76,8 @@ export async function fetchUsers({
       ]
     });
 
+    const resFilter = query.filter(res => res.id !== userId)
+    //  console.log(resFilter)
     // Define the sort options for the fetched users based on createdAt field and provided sort order.
     // const sortOptions = { createdAt: sortBy };
 
@@ -94,7 +96,7 @@ export async function fetchUsers({
     //  console.log({ users, isNext })
     //  console.log({ query })
     //  console.log(users, isNext)
-    return query;
+    return resFilter;
   } catch (error) {
     console.error("Error fetching users:", error);
     throw error;

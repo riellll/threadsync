@@ -26,7 +26,6 @@ const page = async ({searchParams}) => {
     pageSize: 25,
   });
   
-   console.log(userInfo._id)
   return (
     <section>
       {/* <h1 className="text-3xl font-bold text-black dark:text-gray-200 pb-10">Search</h1> */}

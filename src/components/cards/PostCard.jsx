@@ -4,6 +4,7 @@ import Link from "next/link";
 import DeleteThread from "../forms/DeleteThread";
 import PostCardIcons from "../shared/PostCardIcons";
 import ImageModal from "../shared/ImageModal";
+import { formatTimeDifference } from "@/constants";
 
 
 const PostCard = ({
@@ -21,34 +22,9 @@ const PostCard = ({
   onboarded,
 }) => {
 
-  const formatter = new Intl.RelativeTimeFormat(undefined, {
-    numeric: "auto",
-  })
-  const DIVISIONS = [
-    { amount: 60, name: "seconds" },
-    { amount: 60, name: "minutes" },
-    { amount: 24, name: "hours" },
-    { amount: 7, name: "days" },
-    { amount: 4.34524, name: "weeks" },
-    { amount: 12, name: "months" },
-    { amount: Number.POSITIVE_INFINITY, name: "years" },
-  ]
-  
-  function formatTimeAgo(date) {
-    let duration = (date - new Date()) / 1000
-    for (let i = 0; i < DIVISIONS.length; i++) {
-      const division = DIVISIONS[i]
-      // console.log((Math.abs(duration) < division.amount))
-      if (Math.abs(duration) < division.amount) {
-        const dt = formatter.format(Math.round(duration), division.name).split(' ')
-        return (`${dt[0] === 'last' ? 1 : dt[0]}${dt[1] === 'week' ? `${dt[1].charAt(0)}` : dt[1].charAt(0)}`)
-      }
-      duration /= division.amount
-    }
-  } 
-
+   
   // console.log(formatter.format(now))
-  // console.log(comments.length)
+  // console.log(formatTimeDifference(createdAt))
 
   return (
     <article
@@ -120,7 +96,7 @@ const PostCard = ({
           <>
           <div className="flex gap-3">
           <p className="text-sm text-muted-foreground">
-                  {formatTimeAgo(new Date(createdAt))}
+                  {formatTimeDifference(createdAt)}
                 </p>
             <DeleteThread
               threadId={id.toString()}

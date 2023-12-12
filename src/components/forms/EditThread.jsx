@@ -103,11 +103,11 @@ const EditThread = ({ thread }) => {
           onChange={fileImage}
         />
         {userImage[0] || thread.img ? (
-          <Image
+          <img
             src={userImage[0] || thread.img}
-            alt="heart"
-            width={500}
-            height={500}
+            alt="image upload"
+            // width={500}
+            // height={500}
             className="w-96 h-auto"
           />
         ) : undefined}

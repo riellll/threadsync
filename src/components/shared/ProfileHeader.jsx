@@ -23,7 +23,7 @@ const ProfileHeader = ({
               alt="logo"
               // width={500}
               // height={500}
-              className="w-20 h-auto rounded-full object-cover shadow-2xl"
+              className="w-20 h-20 rounded-full object-cover shadow-2xl"
             />
           </div>
 

@@ -86,7 +86,7 @@ const AccountProfile = ({ user, btnTitle }) => {
               Profile
             </h2>
             <img
-              className="rounded-full h-16 w-20"
+              className="rounded-full h-20 w-20"
               src={userImage[0] || user?.image}
               alt="profile pic"
               // width={100}

@@ -114,11 +114,11 @@ const CreatePost = ({ userId, accId }) => {
           />
           {userImage[0] && (
             <div className="relative w-fit">
-            <Image
+            <img
               src={userImage[0]}
-              alt="heart"
-              width={500}
-              height={500}
+              alt="image upload"
+              // width={500}
+              // height={500}
               className="w-96 h-auto"
             />
             <div className="absolute top-0 right-0 rounded-full p-4 py-2 m-2 bg-gray-500/50 cursor-pointer hover:bg-gray-600"

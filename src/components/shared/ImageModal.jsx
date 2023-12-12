@@ -17,11 +17,11 @@ const ImageModal = ({ image }) => {
   return (
     <>
       {/* <Button onPress={onOpen}>Open Modal</Button> */}
-      <Image
+      <img
         src={image}
         alt="postimage"
-        width={900}
-        height={900}
+        // width={900}
+        // height={900}
         onClick={onOpen}
         className="w-96 h-auto cursor-pointer"
       />
@@ -58,11 +58,11 @@ const ImageModal = ({ image }) => {
                 Modal Title
               </ModalHeader> */}
               <ModalBody className="justify-center bg-black">
-                <Image
+                <img
                   src={image}
-                  alt="heart"
-                  width={900}
-                  height={900}
+                  alt="ImageContent"
+                  // width={900}
+                  // height={900}
                   className="w-auto h-auto self-center"
                 />
               </ModalBody>

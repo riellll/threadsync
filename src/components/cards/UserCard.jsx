@@ -11,11 +11,11 @@ const UserCard = ({ id, name, username, imgUrl, personType }) => {
         <article className='flex flex-row justify-between gap-4 max-xs:rounded-xl max-xs:bg-dark-3 max-xs:p-4 xs:flex-row xs:items-center'>
           <div className='flex flex-1 items-start justify-start gap-3 xs:items-center'>
             <div className='flex items-center justify-center'>
-              <Image
+              <img
                 src={imgUrl}
                 alt='user_logo'
-                width={500}
-                height={500}
+                // width={500}
+                // height={500}
                 className='w-12 h-auto rounded-full object-cover'
               />
             </div>

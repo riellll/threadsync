@@ -18,11 +18,11 @@ const ProfileHeader = ({
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="flex h-20 w-20 object-cover items-center">
-            <Image
+            <img
               src={imgUrl}
               alt="logo"
-              width={500}
-              height={500}
+              // width={500}
+              // height={500}
               className="w-20 h-auto rounded-full object-cover shadow-2xl"
             />
           </div>

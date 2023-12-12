@@ -77,7 +77,7 @@ const AccountProfile = ({ user, btnTitle }) => {
         action={handleSubmit}
         className="flex flex-col justify-start text-slate-300"
       >
-        <div className="flex items-center gap-4 mb-6">
+        <div className="flex items-center gap-3 mb-6">
           <label
             htmlFor="logo"
             className="flex flex-col h-24 w-24 items-center justify-self-center rounded-full bg-dark-9"
@@ -85,13 +85,13 @@ const AccountProfile = ({ user, btnTitle }) => {
             <h2 className="pl-48 block text-md font-medium text-gray-500 dark:text-gray-400">
               Profile
             </h2>
-            <Image
-              className="rounded-full h-20 w-24"
+            <img
+              className="rounded-full h-16 w-20"
               src={userImage[0] || user?.image}
               alt="profile pic"
-              width={100}
-              height={100}
-              priority
+              // width={100}
+              // height={100}
+              // priority
             />
           </label>
           <input

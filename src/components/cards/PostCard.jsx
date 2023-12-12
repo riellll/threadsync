@@ -1,6 +1,10 @@
 import Image from "next/image";
 import Link from "next/link";
-
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "@/components/ui/avatar"
 import DeleteThread from "../forms/DeleteThread";
 import PostCardIcons from "../shared/PostCardIcons";
 import ImageModal from "../shared/ImageModal";
@@ -38,12 +42,17 @@ const PostCard = ({
         <div className="flex w-full flex-1 flex-row gap-4 text-white">
           <div className="flex flex-col items-center">
             <Link href={`/profile/${author.id}`} className="relative h-11 w-11">
-              <Image
+             {/*  <img
                 src={author.image}
                 alt="user_community_image"
                 fill
                 className="cursor-pointer rounded-full"
-              />
+              /> */}
+              <Avatar>
+              <AvatarImage asChild  src={author.image} alt="user_community_image">
+              <img src={author.image} alt='user photo' className="cursor-pointer"/>
+              </AvatarImage>
+               </Avatar>
             </Link>
 
             <div className="relative mt-2 w-0.5 grow rounded-full bg-neutral-800 dark:bg-gray-400" />
@@ -114,15 +123,15 @@ const PostCard = ({
         {!isComment && comments.length > 0 && (
           <>
             {comments.slice(0, 2).map((comment, index) => (
-              <Image
+              <img
                 key={index}
                 src={comment.author.image}
                 alt={`user_${index}`}
-                width={24}
-                height={24}
+                // width={24}
+                // height={24}
                 className={`${
                   index !== 0 && "-ml-5"
-                } rounded-full object-cover`}
+                } rounded-full object-cover w-6 h-6`}
               />
             ))}
 

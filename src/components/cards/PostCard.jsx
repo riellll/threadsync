@@ -65,9 +65,9 @@ const PostCard = ({
               </h4>
             </Link>
 
-            <p className="mt-2 text-small-regular pb-3 text-ellipsis text-black dark:text-gray-200 break-all ...">
+            <pre className="mt-2 text-small-regular pb-3 text-black dark:text-gray-200  whitespace-pre-line ...">
               {content}
-            </p>
+            </pre>
             {contentImage && (
               <>
               {/* <Image

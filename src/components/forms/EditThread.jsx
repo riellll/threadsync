@@ -65,7 +65,7 @@ const EditThread = ({ thread }) => {
     }, 5000);
   };
 
-  // console.log(thread._id)
+  console.log(thread.text)
   return (
     <form
       action={handleSubmit}
